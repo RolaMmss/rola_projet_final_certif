@@ -14,8 +14,8 @@ def hello(request):
 """)
 
 
-def homepage(request):
-    return render(request, 'myapp/homepage.html')
+def index(request):
+    return render(request, 'myapp/index.html')
 
 #########################################################
 def signup(request):
@@ -37,7 +37,7 @@ def signup(request):
     return render(request, 'myapp/signup.html', context={'form': form})
 #####################################################################
 def login_user(request):
-    """The function login_page takes a request object and renders the login.html template with a LoginForm instance and a message. If the request method is POST, the form is validated and the user is authenticated using the provided username and password. If the authentication is successful, the user is logged in and redirected to the home page. Otherwise, an error message is displayed.
+    """The function login_page takes a request object and renders the login.html template with a LoginForm instance and a message. If the request method is POST, the form is validated and the user is authenticated using the provided username and password. If the authentication is successful, the user is logged in and redirected to the index page. Otherwise, an error message is displayed.
         The coach is staff and may sign in with:
             Username: Dr.Django
             Password: passworddjango
@@ -59,7 +59,7 @@ def login_user(request):
             if user is not None:
                 login(request, user)
                 message = f'Bonjour, {user.username}! Vous êtes connecté.'
-                return redirect('homepage')
+                return redirect('index')
             else:
                 message = 'Identifiants invalides.'
     return render(request, 'myapp/login.html', context={'form': form,'message':message})

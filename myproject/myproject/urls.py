@@ -32,7 +32,7 @@ from myapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/',views.hello),
-    path('',views.homepage,name='homepage'),
+    path('',views.index,name='index'),
     path('signup/',views.signup, name='signup'),
     path('login/',views.login_user, name='login'),
     path('logout/',views.logout_user, name='logout'),

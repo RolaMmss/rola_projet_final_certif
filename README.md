@@ -1,1 +1,2 @@
-# rola_projet_final_certif
+# Django-Authentification
+signup, login, logout
