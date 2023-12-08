@@ -9,14 +9,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title%} {%endblock title%}</title>
-    <link rel="stylesheet" href="{% static 'reset.css' %}" />
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'myapp/css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}" />
+    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> {% endcomment %}
 
     {% block head %}{%endblock%}
 </head>
 <body>
-    <style>
+     {% comment %} <style>
         body {
         background-image: url("https://images.pexels.com/photos/3709371/pexels-photo-3709371.jpeg?auto=compress&cs=tinysrgb&w=1600");
         background-size: cover;
@@ -31,7 +31,7 @@
           padding: 10px; /* Add padding to create spacing around the navigation links */
       
       }
-    </style>
+    </style>  {% endcomment %}
     
     <nav>
         {% comment %} <figure>
@@ -50,9 +50,9 @@
       </ul>
   </nav>
 
-    {%  if user.is_authenticated %}
-        <p> You are connected as {{ request.user }}! </p>
-    {% endif %}
+    {% comment %} {%  if user.is_authenticated %}
+        <p> Bonjour {{ request.user }}! </p>
+    {% endif %} {% endcomment %}
  
 {% block content %} {% endblock content %}
     

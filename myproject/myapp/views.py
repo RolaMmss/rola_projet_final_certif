@@ -7,15 +7,11 @@ from django.shortcuts import render, redirect
 from .forms import SignupForm,LoginForm
 
 
-def hello(request):
-
-    return HttpResponse(f"""
-        <h1>Hello Django from container!</h1>
-""")
-
-
 def index(request):
     return render(request, 'myapp/index.html')
+
+def hello(request):
+    return render(request, 'myapp/hello.html')
 
 #########################################################
 def signup(request):
@@ -59,7 +55,7 @@ def login_user(request):
             if user is not None:
                 login(request, user)
                 message = f'Bonjour, {user.username}! Vous êtes connecté.'
-                return redirect('index')
+                return redirect('hello')
             else:
                 message = 'Identifiants invalides.'
     return render(request, 'myapp/login.html', context={'form': form,'message':message})

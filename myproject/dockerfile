@@ -20,7 +20,7 @@
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 # Utiliser une image officielle de Python comme base
-FROM python:3.9
+FROM python:3.9-slim
 
 # Créer et définir le répertoire de travail
 WORKDIR /app
@@ -29,19 +29,23 @@ WORKDIR /app
 COPY requirements.txt /app/
 
 # Installer les dépendances
+# RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Copier tout le reste dans le conteneur à /app/
 COPY . /app
 
 # Copier le fichier de configuration Gunicorn
-COPY gunicorn.conf.py /app/gunicorn.conf.py
+# COPY gunicorn.conf.py /app/gunicorn.conf.py
+
+COPY .env /app/.env
 
 # Exposer le port 8000 pour Gunicorn
 EXPOSE 8000
 
 # Utiliser Gunicorn au lieu de runserver avec la configuration
-CMD ["gunicorn", "-c", "gunicorn.conf.py", "myproject.wsgi:application"]
+# CMD ["gunicorn", "-c", "gunicorn.conf.py", "myproject.wsgi:application"]
 
-
+# Lancer la commande pour démarrer l'application Django avec Gunicorn
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "myproject.wsgi:application"]
 
